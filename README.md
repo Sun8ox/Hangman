@@ -1,6 +1,6 @@
 # Hangman
-## Simple hangman game running in terminal  
-## One of my first C#/.Net programs.  
+## Simple hangman game running in terminal written in C#  
+One of my first C# programs.  
 Made in 2024, uploaded 2025.
 
 Screenshots:  
