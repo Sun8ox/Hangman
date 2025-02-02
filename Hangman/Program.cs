@@ -10,46 +10,52 @@
     private static void Main(string[] args)
     {
 
-        List<string> ovocieAndZelenina = new List<string>()
+        List<string> fruitsAndVegetables = new List<string>()
         {
-            "Jablko", "Banán", "Brokolica", "Hruška", "Paradajka", "Mrkva", "Jahody", "Avokádo", "Cibuľa", "Ananás"
+            "Apple", "Banana", "Broccoli", "Pear", "Tomato", "Carrot", "Strawberry", "Avocado", "Onion", "Pineapple"
         };
 
-        List<string> vozidlá = new List<string>()
+        List<string> vehicles = new List<string>()
         {
-            "Auto", "Bicykel", "Kamión", "Motorka", "Skúter", "Traktor", "Lietadlo", "Loď", "Električka", "Autobus"
+            "Car", "Bicycle", "Truck", "Motorcycle", "Scooter", "Tractor", "Plane", "Boat", "Tram", "Bus"
         };
 
-        List<string> škola = new List<string>()
+        List<string> school = new List<string>()
         {
-            "Učiteľ", "Študent", "Tabuľa", "Knihy", "Pero", "Trieda", "Učebnica", "Počítač", "Knižnica", "Peračník", "Mobil"
+            "Teacher", "Student", "Blackboard", "Books", "Pen", "Class", "Textbook", "Computer", "Library", "Phone"
         };
 
-        List<string> programovacieJazyky = new List<string>()
+        List<string> programmingLanguages = new List<string>()
         {
            "Python", "Java", "C++", "JavaScript", "Ruby", "PHP", "Swift", "Kotlin", "C", "Lua" 
 
         };
 
-        List<string> nábytok = new List<string>()
+        List<string> furniture = new List<string>()
         {
-           "Stolička", "Stôl", "Pohovka", "Skriňa", "Posteľ", "Kreslo", "Stena", "Polica", "Zrkadlo"
+            "Chair", "Table", "Sofa", "Wardrobe", "Bed", "Armchair", "Wall", "Shelf", "Mirror"
 
         };
 
-        List<string> komponenty = new List<string>()
+        List<string> pcComponents = new List<string>()
         {
-           "RAM", "CPU", "GPU", "Motherboard", "HDD", "SSD", "Zdroj", "CD-ROM", "Disk"
+           "RAM", "CPU", "GPU", "Motherboard", "HDD", "SSD", "CD-ROM", "Disk"
 
         };
 
-        List<string> slova = new List<string>();
+        List<string> words = new List<string>();
 
-        Console.WriteLine("Vyber si tému ktorú budeš hrať");
-        Console.WriteLine("1 - Ovocie a zelenina; 2 - Vozidlá; 3 - Škola; 4 - Programovacie jazyky; 5 - Nábytok; 6 - Počítačové komponenty");
+        Console.WriteLine("Select category:");
+        Console.WriteLine("1 - Fruits and vegetables;");
+        Console.WriteLine("2 - Vehicles;");
+        Console.WriteLine("3 - School;");
+        Console.WriteLine("4 - Programming languages;");
+        Console.WriteLine("5 - Furniture;");
+        Console.WriteLine("6 - PC components;");
+        Console.WriteLine("0 - Exit;");
         while (true)
         {
-            Console.Write("\n> ");
+            Console.Write("> ");
             var key = Console.ReadKey();
             Console.Write("\n");
 
@@ -59,50 +65,54 @@
 
                 if (mode > 7 || mode < 0)
                 {
-                    Console.WriteLine("Error. Skús to znovu!");
+                    Console.WriteLine("Error. Try again!");
                 }
                 else
                 {
                     if(mode == 1)
                     {
-                        slova.AddRange(ovocieAndZelenina);
+                        words.AddRange(fruitsAndVegetables);
                         Console.Clear();
                         break;
                     }
-                    else if (mode == 2)
+                    if (mode == 2)
                     {
-                        slova.AddRange(vozidlá);
+                        words.AddRange(vehicles);
                         Console.Clear();
                         break;
                     }
-                    else if (mode == 3)
+                    if (mode == 3)
                     {
-                        slova.AddRange(škola);
+                        words.AddRange(school);
                         Console.Clear();
                         break;
                     }
-                    else if (mode == 4)
+                    if (mode == 4)
                     {
-                        slova.AddRange(programovacieJazyky);
+                        words.AddRange(programmingLanguages);
                         Console.Clear();
                         break;
                     }
-                    else if (mode == 5)
+                    if (mode == 5)
                     {
-                        slova.AddRange(nábytok);
+                        words.AddRange(furniture);
                         Console.Clear();
                         break;
                     }
-                    else if (mode == 6)
+                    if (mode == 6)
                     {
-                        slova.AddRange(komponenty);
+                        words.AddRange(pcComponents);
                         Console.Clear();
                         break;
+                    } 
+                    if (mode == 0)
+                    {
+                        Environment.Exit(0);
                     }
                 }
             } catch (Exception)
             {
-                Console.WriteLine("Error. Skús to znovu!");
+                Console.WriteLine("Error. Try again!");
             }
         }
 
@@ -127,22 +137,22 @@
         string rightLegD = "\\";
 
 
-        string slovo = slova[rand.Next(0, slova.Count-1)].ToLower();
-        string nedokonceneSlovo;
+        string word = words[rand.Next(0, words.Count-1)].ToLower();
+        string unfinishedWord;
 
-        List<char> tipnutePismenka = new List<char>();
+        List<char> guessedLetters = new List<char>();
 
         Char clicked = ' ';
 
         bool win = false;
-        int zletipy = 0;
+        int wrongGuesses = 0;
 
-        List<string> koncatiny = new List<string>()
+        List<string> limbs = new List<string>()
         {
             line,head,body,leftHand,rightHand,leftLeg,rightLeg
         };
 
-        List<string> koncatinyD = new List<string>()
+        List<string> limbsD = new List<string>()
         {
             lineD,headD,bodyD,leftHandD,rightHandD,leftLegD,rightLegD
         };
@@ -152,8 +162,10 @@
         while (true)
         {
             clicked = ' ';
-            nedokonceneSlovo = "";
+            unfinishedWord = "";
 
+            
+            // This is very inefficient way to check if the key is pressed but im too lazy now to make it better
             if (Console.KeyAvailable)
             {
                 clicked = char.ToLower(Console.ReadKey().KeyChar);
@@ -165,40 +177,40 @@
             {
                 
 
-                if (!slovo.ToCharArray().Contains(clicked))
+                if (!word.ToCharArray().Contains(clicked))
                 {
-                    if (!tipnutePismenka.Contains(clicked))
+                    if (!guessedLetters.Contains(clicked))
                     {
-                        koncatiny[zletipy] = koncatinyD[zletipy];
-                        zletipy++;
+                        limbs[wrongGuesses] = limbsD[wrongGuesses];
+                        wrongGuesses++;
 
                     }
                 }
 
-                tipnutePismenka.Add(clicked);
+                guessedLetters.Add(clicked);
             }
 
 
 
-            foreach(char charr in slovo.ToCharArray())
+            foreach(char charr in word.ToCharArray())
             {
-                if (tipnutePismenka.Contains(charr))
+                if (guessedLetters.Contains(charr))
                 {
-                    nedokonceneSlovo += charr;
+                    unfinishedWord += charr;
 
                 } else
                 {
-                    nedokonceneSlovo += "_";
+                    unfinishedWord += "_";
                 }
             }
 
-            if(nedokonceneSlovo == slovo)
+            if(unfinishedWord == word)
             {
                 win = true;
                 break;
             }
 
-            if (zletipy >= koncatiny.Count())
+            if (wrongGuesses >= limbs.Count())
             {
                 win = false;
                 break;
@@ -207,13 +219,13 @@
                
 
             
-            Console.Write("\nSlovo: " + nedokonceneSlovo + "\n");
-            Console.Write("Počet zlých tipov: " + zletipy + "  \n");
+            Console.Write("\nWord: " + unfinishedWord + "\n");
+            Console.Write("Number of wrong guesses: " + wrongGuesses + "  \n");
             Console.Write("_____" + "\n");
-            Console.Write("|" + "   " + koncatiny[0] + "\n");
-            Console.Write("|" + "   " + koncatiny[1] + "\n");
-            Console.Write("|" + "  " + koncatiny[3] + koncatiny[2] + koncatiny[4] + "\n");
-            Console.Write("|" + "  " + koncatiny[5] + " " + koncatiny[6] + "\n");
+            Console.Write("|" + "   " + limbs[0] + "\n");
+            Console.Write("|" + "   " + limbs[1] + "\n");
+            Console.Write("|" + "  " + limbs[3] + limbs[2] + limbs[4] + "\n");
+            Console.Write("|" + "  " + limbs[5] + " " + limbs[6] + "\n");
             Console.Write("---------------\n");
 
             
@@ -225,13 +237,13 @@
         Console.Clear();
         if (win)
         {
-            Console.WriteLine("Gratulujem! Vyhral si");
+            Console.WriteLine("Congratulation! You won!");
         } else
         {
-            Console.WriteLine("Zomrel si :(");
-            Console.WriteLine("Slovo bolo: " + slovo);
+            Console.WriteLine("You died :(");
+            Console.WriteLine("The word was: " + word);
         }
-        Console.WriteLine("Klikni hocičo aby si pokračoval!");
+        Console.WriteLine("Click any button to exit!");
         Console.ReadKey();
 
 

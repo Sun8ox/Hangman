@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sun8ox/Library/CloudStorage/OneDrive-Osobný/Programming/C#/Hangman/Hangman/Hangman.csproj",
+      "projectUniqueName": "/Users/sun8ox/Programming/C#/Hangman/Hangman/Hangman.csproj",
       "projectName": "Hangman",
-      "projectPath": "/Users/sun8ox/Library/CloudStorage/OneDrive-Osobný/Programming/C#/Hangman/Hangman/Hangman.csproj",
+      "projectPath": "/Users/sun8ox/Programming/C#/Hangman/Hangman/Hangman.csproj",
       "packagesPath": "/Users/sun8ox/.nuget/packages/",
-      "outputPath": "/Users/sun8ox/Library/CloudStorage/OneDrive-Osobný/Programming/C#/Hangman/Hangman/obj/",
+      "outputPath": "/Users/sun8ox/Programming/C#/Hangman/Hangman/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/sun8ox/.nuget/NuGet/NuGet.Config"
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.310/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/RuntimeIdentifierGraph.json"
       }
     }
   }
